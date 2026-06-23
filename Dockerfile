@@ -98,7 +98,7 @@ ENV NODE_OPTIONS=--max-old-space-size=192
 ENV OD_BIND_HOST=0.0.0.0
 ENV OD_PORT=7456
 ENV OD_DISABLE_API_AUTH=1
-ENV OD_ALLOWED_ORIGINS=https://od.onrender.com
+ENV OD_ALLOWED_ORIGINS=https://od-6kz7.onrender.com
 
 EXPOSE 7456
 
