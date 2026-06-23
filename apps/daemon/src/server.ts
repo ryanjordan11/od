@@ -3389,6 +3389,10 @@ export async function startServer({
 
     const ports = allowedBrowserPorts(resolvedPort);
     if (!isAllowedBrowserOrigin(origin, req.headers.host, ports, host, extraAllowedOrigins)) {
+      if (isLocalSameOrigin(req, resolvedPort)) {
+        // Cloud/proxy deployment — origin validated through OD_ALLOWED_ORIGINS
+        return next();
+      }
       if (req.method !== 'GET' || !isPortlessLoopbackOrigin(String(origin))) {
         return res.status(403).json({ error: 'Cross-origin requests are not allowed' });
       }
