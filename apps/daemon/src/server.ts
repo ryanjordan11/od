@@ -2599,6 +2599,18 @@ function validateLocalDaemonRequest(req) {
 function requireLocalDaemonRequest(req, res, next) {
   const validation = validateLocalDaemonRequest(req);
   if (!validation.ok) {
+    const port = Number(process.env.OD_PORT) || 7456;
+    if (isLocalSameOrigin(req, port)) {
+      res.setHeader('Vary', 'Origin');
+      const origin = req.headers?.origin;
+      if (origin) {
+        res.setHeader('Access-Control-Allow-Origin', String(origin));
+      }
+      res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+      res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+      res.setHeader('Access-Control-Max-Age', '600');
+      return next();
+    }
     return sendApiError(res, 403, 'FORBIDDEN', validation.message, validation.details ? { details: validation.details } : {});
   }
 
