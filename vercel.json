@@ -1,7 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "OD_WEB_OUTPUT_MODE= bash scripts/vercel-build.sh",
-  "installCommand": "pnpm install",
-  "outputDirectory": "out",
-  "framework": null
+  "framework": "nextjs",
+  "rootDirectory": "apps/web",
+  "outputDirectory": "out"
 }
