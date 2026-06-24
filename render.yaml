@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: open-design
+    runtime: docker
+    dockerfilePath: ./deploy/Dockerfile
+    healthCheckPath: /api/health
+    envVars:
+      - key: OD_BIND_HOST
+        value: 0.0.0.0
+      - key: OD_ALLOWED_ORIGINS
+        fromService:
+          type: web
+          name: open-design
+          envVarKey: RENDER_EXTERNAL_URL
+      - key: OD_API_TOKEN
+        generateValue: true
+    disk:
+      name: od-data
+      mountPath: /app/.od
+      sizeGB: 1
