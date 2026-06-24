@@ -1,6 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "OD_WEB_OUTPUT_MODE= pnpm --filter @open-design/web build && mkdir -p out && cp -r apps/web/out/. out",
+  "buildCommand": "OD_WEB_OUTPUT_MODE= OD_WEB_DIST_DIR=../../out pnpm --filter @open-design/web build",
   "installCommand": "pnpm install",
   "outputDirectory": "out",
   "framework": null
