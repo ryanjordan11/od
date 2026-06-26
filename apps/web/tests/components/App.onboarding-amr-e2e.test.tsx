@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 //
 // High-fidelity integration test for the onboarding -> home agent-selection
-// bug: the user picks (or accepts the recommended default) Open Design AMR
+// bug: the user picks (or accepts the recommended default) OneHub Design AMR
 // during first-run onboarding, but the home agent picker comes back showing
 // Claude Code. Unlike the component-level EntryShell tests (which mock
 // `onAgentChange` so it never updates config), this mounts the REAL `App`
@@ -241,7 +241,7 @@ describe('onboarding -> home AMR selection (end to end)', () => {
     render(<App />);
 
     // Bootstrap routes a first-run user into onboarding. The Connect step is
-    // now the centered Open Design Cloud sign-in landing. The mocked vela
+    // now the centered OneHub Design Cloud sign-in landing. The mocked vela
     // status reports the account signed in, so once that status resolves the
     // landing primary CTA reads "Continue (signed in)". AMR detection lags the
     // first agent probe, so wait for the signed-in copy before clicking it to

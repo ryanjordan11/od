@@ -192,9 +192,9 @@ interface PendingPluginUseHandoff {
 }
 
 const AUTHORING_DEFAULT_SCENARIO_INPUTS = {
-  artifactKind: 'Open Design plugin',
-  audience: 'Open Design plugin authors',
-  topic: 'packaging a reusable workflow as an Open Design plugin',
+  artifactKind: 'OneHub Design plugin',
+  audience: 'OneHub Design plugin authors',
+  topic: 'packaging a reusable workflow as a OneHub Design plugin',
 };
 
 
@@ -1127,7 +1127,7 @@ export function HomeView({
       // auth gate and surface as a confusing late create-time failure.
       // Surface the host error instead and keep the existing working dir.
       setError(
-        `Couldn't open the folder picker (${'reason' in result ? result.reason : 'host unavailable'}). Please update Open Design and try again.`,
+        `Couldn't open the folder picker (${'reason' in result ? result.reason : 'host unavailable'}). Please update OneHub Design and try again.`,
       );
       return;
     }
@@ -1762,7 +1762,7 @@ export function HomeView({
       <section className="home-free-agents">
         <h2 className="home-free-agents__title">Free agent CLIs</h2>
         <p className="home-free-agents__subtitle">
-          Install a free agent CLI to start creating with Open Design.
+          Install a free agent CLI to start creating with OneHub Design.
         </p>
         <div className="home-free-agents__cards">
           <a

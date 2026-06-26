@@ -313,8 +313,8 @@ describe('EntryShell settings menu', () => {
   });
 });
 
-describe('EntryShell onboarding Open Design AMR runtime', () => {
-  it('does not auto-select Open Design AMR when the AMR runtime is unavailable', async () => {
+describe('EntryShell onboarding OneHub Design AMR runtime', () => {
+  it('does not auto-select OneHub Design AMR when the AMR runtime is unavailable', async () => {
     globalThis.fetch = vi.fn(async () =>
       jsonResponse({ loggedIn: false, profile: 'prod', user: null, configPath: '/x' }),
     ) as typeof fetch;
@@ -324,9 +324,9 @@ describe('EntryShell onboarding Open Design AMR runtime', () => {
     });
 
     expect(
-      await screen.findByRole('button', { name: /Sign in to Open Design Cloud/i }),
+      await screen.findByRole('button', { name: /Sign in to OneHub Design Cloud/i }),
     ).toBeTruthy();
-    expect(screen.queryByRole('button', { name: /Open Design AMR/i })).toBeNull();
+    expect(screen.queryByRole('button', { name: /OneHub Design AMR/i })).toBeNull();
     fireEvent.click(screen.getByRole('button', { name: /Local coding agent/i }));
 
     await waitFor(() => {
@@ -336,7 +336,7 @@ describe('EntryShell onboarding Open Design AMR runtime', () => {
     expect(screen.queryByText('Sign in to continue')).toBeNull();
   });
 
-  it('shows the Open Design Cloud sign-in landing as the default Connect face', async () => {
+  it('shows the OneHub Design Cloud sign-in landing as the default Connect face', async () => {
     // The recommended-AMR-card concept is gone. Step 0 now renders a centered
     // cloud sign-in landing: the primary CTA is the cloud sign-in button
     // (signed-out copy), with no runtime card and no agent version text.
@@ -346,11 +346,11 @@ describe('EntryShell onboarding Open Design AMR runtime', () => {
     const props = renderOnboarding();
 
     const cloudButton = await screen.findByRole('button', {
-      name: /Sign in to Open Design Cloud/i,
+      name: /Sign in to OneHub Design Cloud/i,
     });
     expect(cloudButton).toBeTruthy();
     // No runtime card, no AMR version text, no "Sign in to continue" CTA.
-    expect(screen.queryByRole('button', { name: /Open Design AMR/i })).toBeNull();
+    expect(screen.queryByRole('button', { name: /OneHub Design AMR/i })).toBeNull();
     expect(screen.queryByText('AMR v0.1.0')).toBeNull();
     expect(screen.queryByRole('button', { name: /Sign in to continue/i })).toBeNull();
     expect(screen.queryByRole('link', { name: /Authorize AMR/i })).toBeNull();
@@ -506,7 +506,7 @@ describe('EntryShell onboarding Open Design AMR runtime', () => {
 
     // The AMR/cloud sign-in is now triggered by the landing primary button.
     const signIn = await screen.findByRole('button', {
-      name: /Sign in to Open Design Cloud/i,
+      name: /Sign in to OneHub Design Cloud/i,
     });
     vi.useFakeTimers();
     fireEvent.click(signIn);
@@ -562,7 +562,7 @@ describe('EntryShell onboarding Open Design AMR runtime', () => {
     renderOnboarding();
 
     fireEvent.click(
-      await screen.findByRole('button', { name: /Sign in to Open Design Cloud/i }),
+      await screen.findByRole('button', { name: /Sign in to OneHub Design Cloud/i }),
     );
 
     await waitFor(() => {
@@ -594,7 +594,7 @@ describe('EntryShell onboarding Open Design AMR runtime', () => {
     renderOnboarding();
 
     const signIn = await screen.findByRole('button', {
-      name: /Sign in to Open Design Cloud/i,
+      name: /Sign in to OneHub Design Cloud/i,
     });
     fireEvent.click(signIn);
     await waitFor(() => {
@@ -613,7 +613,7 @@ describe('EntryShell onboarding Open Design AMR runtime', () => {
     // The landing CTA returns to its signed-out copy and is enabled again,
     // and the secondary runtime links are available once more.
     const cloudButton = await screen.findByRole('button', {
-      name: /Sign in to Open Design Cloud/i,
+      name: /Sign in to OneHub Design Cloud/i,
     });
     expect(cloudButton.hasAttribute('disabled')).toBe(false);
     expect(screen.getByRole('button', { name: /Local coding agent/i })).toBeTruthy();
@@ -672,7 +672,7 @@ describe('EntryShell onboarding Open Design AMR runtime', () => {
     const props = renderOnboarding();
 
     const signIn = await screen.findByRole('button', {
-      name: /Sign in to Open Design Cloud/i,
+      name: /Sign in to OneHub Design Cloud/i,
     });
     vi.useFakeTimers();
     fireEvent.click(signIn);
@@ -700,7 +700,7 @@ describe('EntryShell onboarding Open Design AMR runtime', () => {
     expect(screen.queryByText('Signing in…')).toBeNull();
     expect(
       screen
-        .getByRole('button', { name: /Sign in to Open Design Cloud/i })
+        .getByRole('button', { name: /Sign in to OneHub Design Cloud/i })
         .hasAttribute('disabled'),
     ).toBe(false);
     expect(props.onCompleteOnboarding).not.toHaveBeenCalled();
@@ -732,7 +732,7 @@ describe('EntryShell onboarding Open Design AMR runtime', () => {
     renderOnboarding();
 
     const signIn = await screen.findByRole('button', {
-      name: /Sign in to Open Design Cloud/i,
+      name: /Sign in to OneHub Design Cloud/i,
     });
     vi.useFakeTimers();
     fireEvent.click(signIn);
@@ -772,7 +772,7 @@ describe('EntryShell onboarding Open Design AMR runtime', () => {
     renderOnboarding();
 
     const signIn = await screen.findByRole('button', {
-      name: /Sign in to Open Design Cloud/i,
+      name: /Sign in to OneHub Design Cloud/i,
     });
     vi.useFakeTimers();
     fireEvent.click(signIn);
@@ -788,7 +788,7 @@ describe('EntryShell onboarding Open Design AMR runtime', () => {
     });
   });
 
-  it('continues normally when Open Design AMR is signed in', async () => {
+  it('continues normally when OneHub Design AMR is signed in', async () => {
     globalThis.fetch = vi.fn(async () =>
       jsonResponse({
         loggedIn: true,
@@ -1472,11 +1472,11 @@ describe('EntryShell onboarding Open Design AMR runtime', () => {
     });
 
     // No AMR card, no skeleton placeholder during detection.
-    expect(screen.queryByRole('button', { name: /Open Design AMR/i })).toBeNull();
+    expect(screen.queryByRole('button', { name: /OneHub Design AMR/i })).toBeNull();
     expect(document.querySelector('.onboarding-view__card--skeleton')).toBeNull();
     // The cloud sign-in landing and its alternatives remain available.
     expect(
-      await screen.findByRole('button', { name: /Sign in to Open Design Cloud/i }),
+      await screen.findByRole('button', { name: /Sign in to OneHub Design Cloud/i }),
     ).toBeTruthy();
     expect(screen.getByRole('button', { name: /Local coding agent/i })).toBeTruthy();
     expect(screen.getByRole('button', { name: /Bring your own key/i })).toBeTruthy();
@@ -1489,9 +1489,9 @@ describe('EntryShell onboarding Open Design AMR runtime', () => {
     renderOnboarding({ agentsLoading: false });
 
     expect(
-      await screen.findByRole('button', { name: /Sign in to Open Design Cloud/i }),
+      await screen.findByRole('button', { name: /Sign in to OneHub Design Cloud/i }),
     ).toBeTruthy();
-    expect(screen.queryByRole('button', { name: /Open Design AMR/i })).toBeNull();
+    expect(screen.queryByRole('button', { name: /OneHub Design AMR/i })).toBeNull();
     expect(document.querySelector('.onboarding-view__card--skeleton')).toBeNull();
   });
 
@@ -1506,9 +1506,9 @@ describe('EntryShell onboarding Open Design AMR runtime', () => {
     });
 
     expect(
-      await screen.findByRole('button', { name: /Sign in to Open Design Cloud/i }),
+      await screen.findByRole('button', { name: /Sign in to OneHub Design Cloud/i }),
     ).toBeTruthy();
-    expect(screen.queryByRole('button', { name: /Open Design AMR/i })).toBeNull();
+    expect(screen.queryByRole('button', { name: /OneHub Design AMR/i })).toBeNull();
     expect(document.querySelector('.onboarding-view__card--skeleton')).toBeNull();
   });
 

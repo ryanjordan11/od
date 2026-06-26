@@ -55,7 +55,7 @@ function lastSentEvent(): { event: string; properties: Record<string, unknown> }
 describe('observability/white-screen', () => {
   it('fires client_white_screen when only the dynamic-import loading shell is in the DOM after the timeout', () => {
     // Reproduces the codex-review reported bug: the loading shell text
-    // "Loading Open Design…" is longer than the legacy 10-char floor.
+    // "Loading OneHub Design…" is longer than the legacy 10-char floor.
     const shell = document.createElement('div');
     shell.className = 'od-loading-shell';
     shell.textContent = 'Loading Open Design…';

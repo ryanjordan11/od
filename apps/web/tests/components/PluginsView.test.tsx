@@ -728,8 +728,8 @@ describe('PluginsView', () => {
         'od-plugin-contribute-open-design',
         'bundled',
         'bundled',
-        'Contribute Plugin to Open Design',
-        'Opens a pull request that adds a local Open Design plugin to the Open Design community catalog.',
+        'Contribute to OneHub Design',
+        'Opens a pull request that adds a local Open Design plugin to the OneHub Design community catalog.',
       ),
     ]);
     const onCreatePluginShareProject = vi.fn(async (): Promise<PluginShareProjectOutcome> => ({

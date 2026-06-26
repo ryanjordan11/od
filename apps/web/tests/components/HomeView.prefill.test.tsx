@@ -38,7 +38,7 @@ const AUTHORING_PLUGIN = {
     od: {
       kind: 'scenario',
       taskKind: 'new-generation',
-      useCase: { query: 'Create an Open Design plugin for {{pluginGoal}}.' },
+      useCase: { query: 'Create an OneHub Design plugin for {{pluginGoal}}.' },
       inputs: [
         {
           name: 'pluginGoal',
@@ -226,14 +226,14 @@ const LIVE_ARTIFACT_PLUGIN = {
     ...DEFAULT_PLUGIN.manifest,
     name: 'example-live-artifact',
     title: 'Live Artifact',
-    description: 'Create refreshable, auditable Open Design artifacts.',
+    description: 'Create refreshable, auditable OneHub Design artifacts.',
     od: {
       kind: 'scenario',
       taskKind: 'new-generation',
       mode: 'prototype',
       scenario: 'live',
       useCase: {
-        query: 'Create refreshable, auditable Open Design artifacts backed by connector or local data.',
+        query: 'Create refreshable, auditable OneHub Design artifacts backed by connector or local data.',
       },
       context: {
         skills: [{ path: './SKILL.md' }],
@@ -269,7 +269,7 @@ const LIVE_ARTIFACT_IMAGE_TEMPLATE_PLUGIN = {
 
 const AUTHORING_DEFAULT_SCENARIO_INPUTS = {
   artifactKind: 'Open Design plugin',
-  audience: 'Open Design plugin authors',
+  audience: 'OneHub Design plugin authors',
   topic: 'packaging a reusable workflow as an Open Design plugin',
 };
 
@@ -667,7 +667,7 @@ describe('HomeView prompt handoff', () => {
     expect(JSON.parse(String((applyCall?.[1] as RequestInit).body))).toMatchObject({
       inputs: {
         artifactKind: 'Open Design plugin',
-        audience: 'Open Design plugin authors',
+        audience: 'OneHub Design plugin authors',
         topic: 'packaging a reusable workflow as an Open Design plugin',
       },
     });
@@ -684,7 +684,7 @@ describe('HomeView prompt handoff', () => {
       appliedPluginSnapshotId: 'snap-default',
       pluginInputs: {
         artifactKind: 'Open Design plugin',
-        audience: 'Open Design plugin authors',
+        audience: 'OneHub Design plugin authors',
         topic: 'packaging a reusable workflow as an Open Design plugin',
       },
       projectKind: 'other',
