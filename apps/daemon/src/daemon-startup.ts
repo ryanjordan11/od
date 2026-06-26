@@ -32,7 +32,9 @@ export const DEFAULT_DAEMON_BIND_HOST = '127.0.0.1';
 
 export function normalizeDaemonBindHost(input: unknown): string {
   const host = String(input ?? '').trim();
-  return host || DEFAULT_DAEMON_BIND_HOST;
+  const resolved = host || DEFAULT_DAEMON_BIND_HOST;
+  console.log(`[od] OD_BIND_HOST="${String(input)}" → "${resolved}"`);
+  return resolved;
 }
 
 function requiredOptionValue(flag: string, value: string | undefined, label: string): string | DaemonCliStartupParseResult {
